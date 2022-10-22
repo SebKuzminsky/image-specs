@@ -126,6 +126,24 @@ steps:
     shell: |
       install -m 644 -o root -g root /usr/lib/linux-image-*-arm64/broadcom/bcm*rpi*.dtb /boot/firmware/
 
+  - apt: install
+    packages:
+    - aptitude
+    - build-essential
+    - git
+    - htop
+    - linuxcnc-uspace
+    - lynx
+    - mesaflash
+    - rfkill
+    - screen
+    - sudo
+    - task-xfce-desktop
+    - tig
+    - vim-nox
+    - wireless-tools
+    tag: tag-root
+
   # Clean up archive cache (likely not useful) and lists (likely outdated) to
   # reduce image size by several hundred megabytes.
   - chroot: tag-root
