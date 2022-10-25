@@ -1,0 +1,8 @@
+auto usb0
+
+# ipv4ll needs avahi-autoipd
+iface usb0 inet ipv4ll
+
+#iface usb0 inet static
+#     address 10.215.0.2/8
+#     gateway 10.215.0.1
