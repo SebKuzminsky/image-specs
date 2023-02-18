@@ -1,0 +1,26 @@
+# vim: sw=2
+
+name: Build CI
+
+on:
+  push:
+  pull_request:
+  release:
+    types: [published]
+  check_suite:
+    types: [rerequested]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+        fetch-depth: 1
+    - name: Build RIP & test
+      run: |
+        sudo apt-get --quiet update
+        sudo apt-get --quiet --yes install vmdb2 dosfstools qemu-utils qemu-user-static debootstrap binfmt-support time kpartx bmap-tools python3 fakemachine
+        make linuxcnc_raspi_4_bookworm.img.xz
