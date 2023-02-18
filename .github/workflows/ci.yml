@@ -4,8 +4,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - name: List files in the repository
+      - name: install build dependencies
         run: |
-          ls ${{ github.workspace }}
+          sudo apt-get --quiet update
+          sudo apt-get --quiet --yes install vmdb2 dosfstools qemu-utils qemu-user-static debootstrap binfm
       - run: echo "🍏 This job's status is ${{ job.status }}."
