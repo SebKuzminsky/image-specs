@@ -7,5 +7,6 @@ jobs:
       - name: install build dependencies
         run: |
           sudo apt-get --quiet update
-          sudo apt-get --quiet --yes install vmdb2 dosfstools qemu-utils qemu-user-static debootstrap binfm
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          sudo apt-get --quiet --yes install vmdb2 dosfstools qemu-utils qemu-user-static debootstrap binfmt-support time kpartx bmap-tools python3 fakemachine
+      - name: build the image
+        run: make linuxcnc_raspi_4_bookworm.img.xz
