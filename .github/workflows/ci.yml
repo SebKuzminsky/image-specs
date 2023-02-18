@@ -1,0 +1,21 @@
+on: [push, pull_request]
+jobs:
+  Build-Image:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: install build dependencies
+        run: |
+          sudo apt-get --quiet update
+          sudo apt-get --quiet --yes install vmdb2 dosfstools qemu-utils qemu-user-static debootstrap binfmt-support time kpartx bmap-tools python3
+
+      # Build .img, not .img.xz, because Github zips all the artifacts.
+      - name: build the image
+        run: sudo make linuxcnc_raspi_4_bookworm.img
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: linuxcnc_raspi_4_bookworm
+          path: linuxcnc_raspi_4_bookworm.img
