@@ -91,7 +91,7 @@ steps:
     unless: rootfs_unpacked
 
   - shell: |
-      echo "rpi_4-$(date +%Y%m%d)" > "${ROOT?}/etc/hostname"
+      echo "linuxcnc" > "${ROOT?}/etc/hostname"
 
       # Allow root logins locally with no password
       sed -i 's,root:[^:]*:,root::,' "${ROOT?}/etc/shadow"
