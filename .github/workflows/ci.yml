@@ -10,3 +10,7 @@ jobs:
           sudo apt-get --quiet --yes install vmdb2 dosfstools qemu-utils qemu-user-static debootstrap binfmt-support time kpartx bmap-tools python3
       - name: build the image
         run: sudo make linuxcnc_raspi_4_bookworm.img.xz
+      - uses: actions/upload-artifact@v3
+        with:
+          name: linuxcnc_raspi_4_bookworm
+          path: linuxcnc_raspi_4_bookworm.img.xz
