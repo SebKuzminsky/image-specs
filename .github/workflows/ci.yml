@@ -1,12 +1,12 @@
 on: [push, pull_request]
 jobs:
-  Explore-GitHub-Actions:
+  Build-Image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: install build dependencies
         run: |
           sudo apt-get --quiet update
-          sudo apt-get --quiet --yes install vmdb2 dosfstools qemu-utils qemu-user-static debootstrap binfmt-support time kpartx bmap-tools python3 fakemachine
+          sudo apt-get --quiet --yes install vmdb2 dosfstools qemu-utils qemu-user-static debootstrap binfmt-support time kpartx bmap-tools python3
       - name: build the image
-        run: make linuxcnc_raspi_4_bookworm.img.xz
+        run: sudo make linuxcnc_raspi_4_bookworm.img.xz
