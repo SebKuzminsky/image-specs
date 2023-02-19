@@ -206,4 +206,4 @@ steps:
   # Create /etc/raspi-image-id to know, from what commit the image was built
   - chroot: tag-root
     shell: |
-      echo "image based on revision: cfce727 (Merge branch 'increase-image-size' into 'master', 2022-12-21) and build on 2023-02-17 22:22 (UTC)" > "/etc/raspi-image-id"
+      echo "image based on revision: $(git log -1 --pretty=format:'%h \"%s\" (%as)')" > "/etc/raspi-image-id"
