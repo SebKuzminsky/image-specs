@@ -13,9 +13,12 @@ jobs:
 
       # Build .img, not .img.xz, because Github zips all the artifacts.
       - name: build the image
-        run: sudo make linuxcnc_raspi_4_bookworm.img
+        run: |
+          sudo make linuxcnc_raspi_4_bookworm.img
+          VERSION=$(git log -1 --pretty=format:%as_%h HEAD)
+          sudo mv linuxcnc_raspi_4_bookworm.img linuxcnc_raspi_4_bookworm_${VERSION}.img
 
       - uses: actions/upload-artifact@v3
         with:
           name: linuxcnc_raspi_4_bookworm
-          path: linuxcnc_raspi_4_bookworm.img
+          path: linuxcnc_raspi_4_bookworm_*.img
