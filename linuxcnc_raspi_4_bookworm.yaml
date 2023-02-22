@@ -135,6 +135,7 @@ steps:
     - git
     - htop
     - linuxcnc-uspace
+    - lsb-release
     - lynx
     - mesaflash
     - rfkill
