@@ -73,17 +73,33 @@ steps:
 
   - apt: install
     packages:
+      - aptitude
+      - avahi-autoipd
+      - bluez-firmware
+      - build-essential
       - ca-certificates
       - dosfstools
-      - iw
-      - parted
-      - ssh
-      - wpasupplicant
-      - systemd-timesyncd
-      - linux-image-rt-arm64
-      - raspi-firmware
       - firmware-brcm80211
-      - bluez-firmware
+      - git
+      - htop
+      - iw
+      - linuxcnc-uspace
+      - linux-image-rt-arm64
+      - lsb-release
+      - lynx
+      - mesaflash
+      - parted
+      - raspi-firmware
+      - rfkill
+      - screen
+      - ssh
+      - sudo
+      - systemd-timesyncd
+      - task-xfce-desktop
+      - tig
+      - vim-nox
+      - wireless-tools
+      - wpasupplicant
     tag: tag-root
     unless: rootfs_unpacked
 
@@ -126,26 +142,6 @@ steps:
   - chroot: tag-root
     shell: |
       install -m 644 -o root -g root /usr/lib/linux-image-*-arm64/broadcom/bcm*rpi*.dtb /boot/firmware/
-
-  - apt: install
-    packages:
-    - aptitude
-    - avahi-autoipd
-    - build-essential
-    - git
-    - htop
-    - linuxcnc-uspace
-    - lsb-release
-    - lynx
-    - mesaflash
-    - rfkill
-    - screen
-    - sudo
-    - task-xfce-desktop
-    - tig
-    - vim-nox
-    - wireless-tools
-    tag: tag-root
 
   # Clean up archive cache (likely not useful) and lists (likely outdated) to
   # reduce image size by several hundred megabytes.
