@@ -75,6 +75,7 @@ steps:
     packages:
       - aptitude
       - avahi-autoipd
+      - bash-completion
       - bluez-firmware
       - build-essential
       - ca-certificates
