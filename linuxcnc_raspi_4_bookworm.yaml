@@ -176,7 +176,7 @@ steps:
   # Tune the kernel for minimal latency.
   - chroot: tag-root
     shell: |
-      echo 'irqaffinity=0-2 rcu_nocbs=3 rcu_nocb_poll nohz_full=3 isolcpus=nohz,domain,managed_irq,3 sysctl.kernel.sched_rt_runtime_us=-1 modules-load=g_ether' >| /etc/default/raspi-extra-cmdline
+      echo 'irqaffinity=0-2 rcu_nocbs=3 rcu_nocb_poll nohz_full=3 isolcpus=nohz,domain,managed_irq,3 sysctl.kernel.sched_rt_runtime_us=-1 modules-load=g_ether iomem=relaxed' >| /etc/default/raspi-extra-cmdline
       sed -i "s/\$/ $(cat /etc/default/raspi-extra-cmdline)/" /boot/firmware/cmdline.txt
 
   # TODO(https://github.com/larswirzenius/vmdb2/issues/24): remove once vmdb
