@@ -1,5 +1,13 @@
 # Uncomment the following lines to enable networking on the wired
 # ethernet interface.
+
+# Normal DHCP for connecting to a general-purpose network.
 #auto eth0
 #iface eth0 inet dhcp
 #iface eth0 inet6 auto
+
+# Static configuration for connecting to a Mesa Hostmot2 Ethernet card
+# for machine control.
+#iface eth0 inet static
+#    address 192.168.1.1/24
+#    hardware-irq-coalesce-rx-usecs 0
